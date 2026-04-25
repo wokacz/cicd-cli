@@ -1,0 +1,120 @@
+{
+  "app": {
+    "description": "GitLab CI/CD CLI – sledujte své pipeline přímo z terminálu.",
+    "config_panel": "Konfigurace GitLab CI/CD CLI"
+  },
+  "init": {
+    "short_help": "Nastavit připojení k instanci GitLab.",
+    "help": "Nastavit připojení k instanci GitLab.\n\nInteraktivně vyzve k zadání URL GitLabu a Personal Access Tokenu,\nověří připojení a bezpečně uloží přihlašovací údaje.\n\nPříklad:\n  cicd init",
+    "prompt_url": "Zadejte URL GitLabu (např. https://git.example.com)",
+    "prompt_token": "Zadejte API token (Personal Access Token)",
+    "success": "Úspěšně připojeno ke GitLabu {version}!",
+    "error": "Chyba: {error}",
+    "connection_error": "Nepodařilo se připojit: {error}"
+  },
+  "add": {
+    "short_help": "Přidat repozitář ke sledování.",
+    "help": "Přidat repozitář do seznamu sledovaných.\n\nArgument REPO by měl být ve formátu 'skupina/projekt' odpovídající\ncestě projektu v GitLabu.\n\nPříklady:\n  cicd add mygroup/myproject\n  cicd add frontend/webapp",
+    "success": "Repozitář {name} byl úspěšně přidán!",
+    "error": "Chyba: {error}"
+  },
+  "remove": {
+    "short_help": "Odebrat repozitář ze sledovaných.",
+    "help": "Odebrat repozitář ze seznamu sledovaných.\n\nPříklady:\n  cicd remove mygroup/myproject",
+    "success": "Odebráno: {repo}",
+    "not_tracked": "Repozitář {repo} nebyl sledován."
+  },
+  "list": {
+    "short_help": "Zobrazit sledované repozitáře.",
+    "help": "Zobrazit všechny aktuálně sledované repozitáře.\n\nPříklad:\n  cicd list",
+    "title": "Sledované repozitáře",
+    "empty": "Žádné sledované repozitáře. Přidejte jeden příkazem: cicd add group/project"
+  },
+  "status": {
+    "short_help": "Zobrazit stav posledního pipeline.",
+    "help": "Zobrazit stav posledního pipeline pro sledované repozitáře.\n\nPokud je zadán REPO, zobrazí stav pouze pro daný repozitář.\nJinak zobrazí stav pro všechny sledované repozitáře.\n\nPříklady:\n  cicd status\n  cicd status mygroup/myproject",
+    "empty": "Žádné sledované repozitáře. Přidejte jeden příkazem: cicd add",
+    "no_pipelines": "Nebyly nalezeny žádné pipeline",
+    "pipeline_info": "Pipeline #{id} ({ref})",
+    "error": "{repo}: {error}"
+  },
+  "pipelines": {
+    "short_help": "Zobrazit poslední pipeline repozitáře.",
+    "help": "Zobrazit poslední pipeline pro daný repozitář.\n\nPříklady:\n  cicd pipelines mygroup/myproject\n  cicd pipelines mygroup/myproject -n 20",
+    "title": "Pipeline – {repo}",
+    "count_help": "Počet pipeline k zobrazení",
+    "error": "Chyba: {error}"
+  },
+  "jobs": {
+    "short_help": "Zobrazit úlohy pipeline.",
+    "help": "Zobrazit úlohy pro konkrétní pipeline nebo poslední pipeline.\n\nPokud není zadáno PIPELINE_ID, zobrazí úlohy z posledního pipeline.\nPoužijte -n/--count pro zobrazení úloh z posledních N pipeline.\n\nPříklady:\n  cicd jobs mygroup/myproject\n  cicd jobs mygroup/myproject 4409\n  cicd jobs mygroup/myproject -n 5",
+    "title": "Úlohy – {repo} / Pipeline #{pipeline_id}",
+    "count_help": "Zobrazit úlohy z posledních N pipeline",
+    "no_pipelines": "Pro {repo} nebyly nalezeny žádné pipeline",
+    "error": "Chyba: {error}"
+  },
+  "logs": {
+    "short_help": "Zobrazit logy úlohy.",
+    "help": "Zobrazit logy pro konkrétní úlohu.\n\nPoužijte --tail/-t pro zobrazení pouze posledních N řádků.\n\nPříklady:\n  cicd logs mygroup/myproject 11765\n  cicd logs mygroup/myproject 11765 --tail 50",
+    "tail_help": "Zobrazit posledních N řádků (0 = vše)",
+    "error": "Chyba: {error}"
+  },
+  "images": {
+    "short_help": "Zobrazit obrazy Container Registry.",
+    "help": "Zobrazit obrazy v Container Registry repozitáře.\n\nPříklady:\n  cicd images mygroup/myproject",
+    "empty": "V registru pro {repo} nebyly nalezeny žádné obrazy",
+    "no_tags": "žádné tagy",
+    "error": "Chyba: {error}"
+  },
+  "mrs": {
+    "short_help": "Zobrazit merge requesty.",
+    "help": "Zobrazit merge requesty pro repozitář.\n\nFiltrovat podle stavu: opened, merged, closed nebo all.\n\nPříklady:\n  cicd mrs mygroup/myproject\n  cicd mrs mygroup/myproject --state merged",
+    "title": "Merge Requesty – {repo} ({state})",
+    "error": "Chyba: {error}"
+  },
+  "envs": {
+    "short_help": "Zobrazit prostředí repozitáře.",
+    "help": "Zobrazit prostředí (nasazení) pro repozitář.\n\nPříklady:\n  cicd envs mygroup/myproject",
+    "title": "Prostředí – {repo}",
+    "error": "Chyba: {error}"
+  },
+  "language": {
+    "short_help": "Nastavit jazyk zobrazení.",
+    "help": "Nastavit jazyk zobrazení pro zprávy CLI.\n\nDostupné jazyky: en, pl, de, fr, es, nl, cs\n\nPříklady:\n  cicd language pl\n  cicd language en",
+    "success": "Jazyk nastaven na: {lang}",
+    "current": "Aktuální jazyk: {lang}",
+    "available": "Dostupné jazyky: {langs}",
+    "invalid": "Neznámý jazyk: {lang}. Dostupné: {available}"
+  },
+  "error": {
+    "not_initialized": "Připojení ke GitLabu není nastaveno. Nejprve spusťte: cicd init",
+    "invalid_token": "Neplatný API token (401 Unauthorized)",
+    "not_found": "Prostředek nenalezen: {path}"
+  },
+  "table": {
+    "id": "ID",
+    "stage": "Fáze",
+    "name": "Název",
+    "status": "Stav",
+    "duration": "Doba trvání (s)",
+    "branch": "Větev",
+    "created": "Vytvořeno",
+    "tag": "Tag",
+    "size": "Velikost",
+    "title": "Název",
+    "author": "Autor",
+    "state": "Stav",
+    "url": "URL"
+  },
+  "status_label": {
+    "success": "ÚSPĚCH",
+    "passed": "ÚSPĚCH",
+    "failed": "SELHÁNÍ",
+    "running": "BĚŽÍ",
+    "pending": "ČEKÁ",
+    "canceled": "ZRUŠENO",
+    "skipped": "PŘESKOČENO",
+    "manual": "MANUÁLNÍ",
+    "created": "VYTVOŘENO"
+  }
+}

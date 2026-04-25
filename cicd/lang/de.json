@@ -1,0 +1,120 @@
+{
+  "app": {
+    "description": "GitLab CI/CD CLI – überwachen Sie Ihre Pipelines direkt im Terminal.",
+    "config_panel": "GitLab CI/CD CLI Konfiguration"
+  },
+  "init": {
+    "short_help": "Verbindung zu einer GitLab-Instanz konfigurieren.",
+    "help": "Verbindung zu einer GitLab-Instanz konfigurieren.\n\nFragt interaktiv nach der GitLab-URL und einem Personal Access Token,\nvalidiert die Verbindung und speichert die Zugangsdaten sicher.\n\nBeispiel:\n  cicd init",
+    "prompt_url": "GitLab-URL eingeben (z.B. https://git.example.com)",
+    "prompt_token": "API-Token eingeben (Personal Access Token)",
+    "success": "Erfolgreich mit GitLab {version} verbunden!",
+    "error": "Fehler: {error}",
+    "connection_error": "Verbindung fehlgeschlagen: {error}"
+  },
+  "add": {
+    "short_help": "Ein Repository zur Überwachung hinzufügen.",
+    "help": "Ein Repository zur Überwachungsliste hinzufügen.\n\nDas Argument REPO sollte im Format 'group/project' angegeben werden,\nentsprechend dem GitLab-Projektpfad.\n\nBeispiele:\n  cicd add mygroup/myproject\n  cicd add frontend/webapp",
+    "success": "Repository {name} erfolgreich hinzugefügt!",
+    "error": "Fehler: {error}"
+  },
+  "remove": {
+    "short_help": "Ein Repository von der Überwachungsliste entfernen.",
+    "help": "Ein Repository von der Überwachungsliste entfernen.\n\nBeispiele:\n  cicd remove mygroup/myproject",
+    "success": "{repo} entfernt",
+    "not_tracked": "Repository {repo} wurde nicht überwacht."
+  },
+  "list": {
+    "short_help": "Überwachte Repositories anzeigen.",
+    "help": "Alle derzeit überwachten Repositories anzeigen.\n\nBeispiel:\n  cicd list",
+    "title": "Überwachte Repositories",
+    "empty": "Keine überwachten Repositories. Fügen Sie eines hinzu mit: cicd add group/project"
+  },
+  "status": {
+    "short_help": "Letzten Pipeline-Status anzeigen.",
+    "help": "Den Status der letzten Pipeline für überwachte Repositories anzeigen.\n\nWenn REPO angegeben ist, wird nur der Status dieses Repositories angezeigt.\nAndernfalls wird der Status aller überwachten Repositories angezeigt.\n\nBeispiele:\n  cicd status\n  cicd status mygroup/myproject",
+    "empty": "Keine überwachten Repositories. Fügen Sie eines hinzu mit: cicd add",
+    "no_pipelines": "Keine Pipelines gefunden",
+    "pipeline_info": "Pipeline #{id} ({ref})",
+    "error": "{repo}: {error}"
+  },
+  "pipelines": {
+    "short_help": "Letzte Pipelines eines Repositories anzeigen.",
+    "help": "Letzte Pipelines eines Repositories anzeigen.\n\nBeispiele:\n  cicd pipelines mygroup/myproject\n  cicd pipelines mygroup/myproject -n 20",
+    "title": "Pipelines – {repo}",
+    "count_help": "Anzahl der anzuzeigenden Pipelines",
+    "error": "Fehler: {error}"
+  },
+  "jobs": {
+    "short_help": "Jobs einer Pipeline anzeigen.",
+    "help": "Jobs einer bestimmten oder der letzten Pipeline anzeigen.\n\nWenn PIPELINE_ID weggelassen wird, werden Jobs der letzten Pipeline angezeigt.\nMit -n/--count können Jobs der letzten N Pipelines angezeigt werden.\n\nBeispiele:\n  cicd jobs mygroup/myproject\n  cicd jobs mygroup/myproject 4409\n  cicd jobs mygroup/myproject -n 5",
+    "title": "Jobs – {repo} / Pipeline #{pipeline_id}",
+    "count_help": "Jobs der letzten N Pipelines anzeigen",
+    "no_pipelines": "Keine Pipelines für {repo} gefunden",
+    "error": "Fehler: {error}"
+  },
+  "logs": {
+    "short_help": "Logs eines Jobs anzeigen.",
+    "help": "Logs eines bestimmten Jobs anzeigen.\n\nMit --tail/-t können nur die letzten N Zeilen angezeigt werden.\n\nBeispiele:\n  cicd logs mygroup/myproject 11765\n  cicd logs mygroup/myproject 11765 --tail 50",
+    "tail_help": "Letzte N Zeilen anzeigen (0 = alle)",
+    "error": "Fehler: {error}"
+  },
+  "images": {
+    "short_help": "Container-Registry-Images anzeigen.",
+    "help": "Images in der Container Registry eines Repositories anzeigen.\n\nBeispiele:\n  cicd images mygroup/myproject",
+    "empty": "Keine Images in der Registry für {repo} gefunden",
+    "no_tags": "keine Tags",
+    "error": "Fehler: {error}"
+  },
+  "mrs": {
+    "short_help": "Merge Requests anzeigen.",
+    "help": "Merge Requests eines Repositories anzeigen.\n\nNach Status filtern: opened, merged, closed oder all.\n\nBeispiele:\n  cicd mrs mygroup/myproject\n  cicd mrs mygroup/myproject --state merged",
+    "title": "Merge Requests – {repo} ({state})",
+    "error": "Fehler: {error}"
+  },
+  "envs": {
+    "short_help": "Umgebungen eines Repositories anzeigen.",
+    "help": "Umgebungen (Deployments) eines Repositories anzeigen.\n\nBeispiele:\n  cicd envs mygroup/myproject",
+    "title": "Umgebungen – {repo}",
+    "error": "Fehler: {error}"
+  },
+  "language": {
+    "short_help": "Anzeigesprache festlegen.",
+    "help": "Anzeigesprache für CLI-Meldungen festlegen.\n\nVerfügbare Sprachen: en, pl, de, fr, es, nl, cs\n\nBeispiele:\n  cicd language pl\n  cicd language en",
+    "success": "Sprache gesetzt auf: {lang}",
+    "current": "Aktuelle Sprache: {lang}",
+    "available": "Verfügbare Sprachen: {langs}",
+    "invalid": "Unbekannte Sprache: {lang}. Verfügbar: {available}"
+  },
+  "error": {
+    "not_initialized": "GitLab-Verbindung nicht konfiguriert. Führen Sie zuerst aus: cicd init",
+    "invalid_token": "Ungültiger API-Token (401 Unauthorized)",
+    "not_found": "Ressource nicht gefunden: {path}"
+  },
+  "table": {
+    "id": "ID",
+    "stage": "Stufe",
+    "name": "Name",
+    "status": "Status",
+    "duration": "Dauer (s)",
+    "branch": "Branch",
+    "created": "Erstellt",
+    "tag": "Tag",
+    "size": "Größe",
+    "title": "Titel",
+    "author": "Autor",
+    "state": "Zustand",
+    "url": "URL"
+  },
+  "status_label": {
+    "success": "BESTANDEN",
+    "passed": "BESTANDEN",
+    "failed": "FEHLGESCHLAGEN",
+    "running": "LÄUFT",
+    "pending": "WARTEND",
+    "canceled": "ABGEBROCHEN",
+    "skipped": "ÜBERSPRUNGEN",
+    "manual": "MANUELL",
+    "created": "ERSTELLT"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "app": {
+    "description": "GitLab CI/CD CLI - monitor your pipelines from the terminal.",
+    "config_panel": "GitLab CI/CD CLI Configuration"
+  },
+  "init": {
+    "short_help": "Configure connection to a GitLab instance.",
+    "help": "Configure connection to a GitLab instance.\n\nInteractively prompts for the GitLab URL and a Personal Access Token,\nvalidates the connection, and saves credentials securely.\n\nExample:\n  cicd init",
+    "prompt_url": "Enter GitLab URL (e.g. https://git.example.com)",
+    "prompt_token": "Enter API token (Personal Access Token)",
+    "success": "Successfully connected to GitLab {version}!",
+    "error": "Error: {error}",
+    "connection_error": "Could not connect: {error}"
+  },
+  "add": {
+    "short_help": "Add a repository to track.",
+    "help": "Add a repository to the tracked list.\n\nThe REPO argument should be in 'group/project' format matching\nthe GitLab project path.\n\nExamples:\n  cicd add mygroup/myproject\n  cicd add frontend/webapp",
+    "success": "Successfully added repository {name}!",
+    "error": "Error: {error}"
+  },
+  "remove": {
+    "short_help": "Remove a repository from tracked list.",
+    "help": "Remove a repository from the tracked list.\n\nExamples:\n  cicd remove mygroup/myproject",
+    "success": "Removed {repo}",
+    "not_tracked": "Repository {repo} was not being tracked."
+  },
+  "list": {
+    "short_help": "Show tracked repositories.",
+    "help": "Display all currently tracked repositories.\n\nExample:\n  cicd list",
+    "title": "Tracked Repositories",
+    "empty": "No tracked repositories. Add one with: cicd add group/project"
+  },
+  "status": {
+    "short_help": "Show latest pipeline status.",
+    "help": "Show the status of the latest pipeline for tracked repositories.\n\nIf REPO is specified, shows status only for that repository.\nOtherwise, shows status for all tracked repositories.\n\nExamples:\n  cicd status\n  cicd status mygroup/myproject",
+    "empty": "No tracked repositories. Add one with: cicd add",
+    "no_pipelines": "No pipelines found",
+    "pipeline_info": "Pipeline #{id} ({ref})",
+    "error": "{repo}: {error}"
+  },
+  "pipelines": {
+    "short_help": "Show recent pipelines for a repo.",
+    "help": "Display recent pipelines for a given repository.\n\nExamples:\n  cicd pipelines mygroup/myproject\n  cicd pipelines mygroup/myproject -n 20",
+    "title": "Pipelines - {repo}",
+    "count_help": "Number of pipelines to show",
+    "error": "Error: {error}"
+  },
+  "jobs": {
+    "short_help": "Show jobs for a pipeline.",
+    "help": "Display jobs for a specific pipeline or the latest one.\n\nIf PIPELINE_ID is omitted, jobs from the latest pipeline are shown.\nUse -n/--count to show jobs from the last N pipelines.\n\nExamples:\n  cicd jobs mygroup/myproject\n  cicd jobs mygroup/myproject 4409\n  cicd jobs mygroup/myproject -n 5",
+    "title": "Jobs - {repo} / Pipeline #{pipeline_id}",
+    "count_help": "Show jobs from last N pipelines",
+    "no_pipelines": "No pipelines found for {repo}",
+    "error": "Error: {error}"
+  },
+  "logs": {
+    "short_help": "Show logs for a job.",
+    "help": "Display logs for a specific job.\n\nUse --tail/-t to show only the last N lines.\n\nExamples:\n  cicd logs mygroup/myproject 11765\n  cicd logs mygroup/myproject 11765 --tail 50",
+    "tail_help": "Show last N lines (0 = all)",
+    "error": "Error: {error}"
+  },
+  "images": {
+    "short_help": "Show Container Registry images.",
+    "help": "Display images in the Container Registry of a repository.\n\nExamples:\n  cicd images mygroup/myproject",
+    "empty": "No images found in registry for {repo}",
+    "no_tags": "no tags",
+    "error": "Error: {error}"
+  },
+  "mrs": {
+    "short_help": "Show merge requests.",
+    "help": "Display merge requests for a repository.\n\nFilter by state: opened, merged, closed, or all.\n\nExamples:\n  cicd mrs mygroup/myproject\n  cicd mrs mygroup/myproject --state merged",
+    "title": "Merge Requests - {repo} ({state})",
+    "error": "Error: {error}"
+  },
+  "envs": {
+    "short_help": "Show environments for a repo.",
+    "help": "Display environments (deployments) for a repository.\n\nExamples:\n  cicd envs mygroup/myproject",
+    "title": "Environments - {repo}",
+    "error": "Error: {error}"
+  },
+  "language": {
+    "short_help": "Set display language.",
+    "help": "Set the display language for CLI messages.\n\nAvailable languages: en, pl, de, fr, es, nl, cs\n\nExamples:\n  cicd language pl\n  cicd language en",
+    "success": "Language set to: {lang}",
+    "current": "Current language: {lang}",
+    "available": "Available languages: {langs}",
+    "invalid": "Unknown language: {lang}. Available: {available}"
+  },
+  "error": {
+    "not_initialized": "GitLab connection not configured. Run first: cicd init",
+    "invalid_token": "Invalid API token (401 Unauthorized)",
+    "not_found": "Resource not found: {path}"
+  },
+  "table": {
+    "id": "ID",
+    "stage": "Stage",
+    "name": "Name",
+    "status": "Status",
+    "duration": "Duration (s)",
+    "branch": "Branch",
+    "created": "Created",
+    "tag": "Tag",
+    "size": "Size",
+    "title": "Title",
+    "author": "Author",
+    "state": "State",
+    "url": "URL"
+  },
+  "status_label": {
+    "success": "PASSED",
+    "passed": "PASSED",
+    "failed": "FAILED",
+    "running": "RUNNING",
+    "pending": "PENDING",
+    "canceled": "CANCELED",
+    "skipped": "SKIPPED",
+    "manual": "MANUAL",
+    "created": "CREATED"
+  }
+}

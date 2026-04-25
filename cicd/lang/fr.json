@@ -1,0 +1,120 @@
+{
+  "app": {
+    "description": "GitLab CI/CD CLI - surveillez vos pipelines depuis le terminal.",
+    "config_panel": "Configuration de GitLab CI/CD CLI"
+  },
+  "init": {
+    "short_help": "Configurer la connexion à une instance GitLab.",
+    "help": "Configurer la connexion à une instance GitLab.\n\nDemande de manière interactive l'URL GitLab et un Personal Access Token,\nvalide la connexion et enregistre les identifiants de manière sécurisée.\n\nExemple :\n  cicd init",
+    "prompt_url": "Entrez l'URL GitLab (ex. https://git.example.com)",
+    "prompt_token": "Entrez le jeton API (Personal Access Token)",
+    "success": "Connexion réussie à GitLab {version} !",
+    "error": "Erreur : {error}",
+    "connection_error": "Impossible de se connecter : {error}"
+  },
+  "add": {
+    "short_help": "Ajouter un dépôt à suivre.",
+    "help": "Ajouter un dépôt à la liste de suivi.\n\nL'argument REPO doit être au format 'groupe/projet' correspondant\nau chemin du projet GitLab.\n\nExemples :\n  cicd add mygroup/myproject\n  cicd add frontend/webapp",
+    "success": "Dépôt {name} ajouté avec succès !",
+    "error": "Erreur : {error}"
+  },
+  "remove": {
+    "short_help": "Retirer un dépôt de la liste de suivi.",
+    "help": "Retirer un dépôt de la liste de suivi.\n\nExemples :\n  cicd remove mygroup/myproject",
+    "success": "{repo} retiré",
+    "not_tracked": "Le dépôt {repo} n'était pas suivi."
+  },
+  "list": {
+    "short_help": "Afficher les dépôts suivis.",
+    "help": "Afficher tous les dépôts actuellement suivis.\n\nExemple :\n  cicd list",
+    "title": "Dépôts suivis",
+    "empty": "Aucun dépôt suivi. Ajoutez-en un avec : cicd add group/project"
+  },
+  "status": {
+    "short_help": "Afficher le statut du dernier pipeline.",
+    "help": "Afficher le statut du dernier pipeline pour les dépôts suivis.\n\nSi REPO est spécifié, affiche le statut uniquement pour ce dépôt.\nSinon, affiche le statut de tous les dépôts suivis.\n\nExemples :\n  cicd status\n  cicd status mygroup/myproject",
+    "empty": "Aucun dépôt suivi. Ajoutez-en un avec : cicd add",
+    "no_pipelines": "Aucun pipeline trouvé",
+    "pipeline_info": "Pipeline #{id} ({ref})",
+    "error": "{repo} : {error}"
+  },
+  "pipelines": {
+    "short_help": "Afficher les pipelines récents d'un dépôt.",
+    "help": "Afficher les pipelines récents d'un dépôt donné.\n\nExemples :\n  cicd pipelines mygroup/myproject\n  cicd pipelines mygroup/myproject -n 20",
+    "title": "Pipelines - {repo}",
+    "count_help": "Nombre de pipelines à afficher",
+    "error": "Erreur : {error}"
+  },
+  "jobs": {
+    "short_help": "Afficher les jobs d'un pipeline.",
+    "help": "Afficher les jobs d'un pipeline spécifique ou du dernier pipeline.\n\nSi PIPELINE_ID est omis, les jobs du dernier pipeline sont affichés.\nUtilisez -n/--count pour afficher les jobs des N derniers pipelines.\n\nExemples :\n  cicd jobs mygroup/myproject\n  cicd jobs mygroup/myproject 4409\n  cicd jobs mygroup/myproject -n 5",
+    "title": "Jobs - {repo} / Pipeline #{pipeline_id}",
+    "count_help": "Afficher les jobs des N derniers pipelines",
+    "no_pipelines": "Aucun pipeline trouvé pour {repo}",
+    "error": "Erreur : {error}"
+  },
+  "logs": {
+    "short_help": "Afficher les logs d'un job.",
+    "help": "Afficher les logs d'un job spécifique.\n\nUtilisez --tail/-t pour afficher uniquement les N dernières lignes.\n\nExemples :\n  cicd logs mygroup/myproject 11765\n  cicd logs mygroup/myproject 11765 --tail 50",
+    "tail_help": "Afficher les N dernières lignes (0 = tout)",
+    "error": "Erreur : {error}"
+  },
+  "images": {
+    "short_help": "Afficher les images du Container Registry.",
+    "help": "Afficher les images du Container Registry d'un dépôt.\n\nExemples :\n  cicd images mygroup/myproject",
+    "empty": "Aucune image trouvée dans le registre pour {repo}",
+    "no_tags": "aucun tag",
+    "error": "Erreur : {error}"
+  },
+  "mrs": {
+    "short_help": "Afficher les merge requests.",
+    "help": "Afficher les merge requests d'un dépôt.\n\nFiltrer par état : opened, merged, closed ou all.\n\nExemples :\n  cicd mrs mygroup/myproject\n  cicd mrs mygroup/myproject --state merged",
+    "title": "Merge Requests - {repo} ({state})",
+    "error": "Erreur : {error}"
+  },
+  "envs": {
+    "short_help": "Afficher les environnements d'un dépôt.",
+    "help": "Afficher les environnements (déploiements) d'un dépôt.\n\nExemples :\n  cicd envs mygroup/myproject",
+    "title": "Environnements - {repo}",
+    "error": "Erreur : {error}"
+  },
+  "language": {
+    "short_help": "Définir la langue d'affichage.",
+    "help": "Définir la langue d'affichage pour les messages du CLI.\n\nLangues disponibles : en, pl, de, fr, es, nl, cs\n\nExemples :\n  cicd language pl\n  cicd language en",
+    "success": "Langue définie : {lang}",
+    "current": "Langue actuelle : {lang}",
+    "available": "Langues disponibles : {langs}",
+    "invalid": "Langue inconnue : {lang}. Disponibles : {available}"
+  },
+  "error": {
+    "not_initialized": "Connexion GitLab non configurée. Exécutez d'abord : cicd init",
+    "invalid_token": "Jeton API invalide (401 Unauthorized)",
+    "not_found": "Ressource non trouvée : {path}"
+  },
+  "table": {
+    "id": "ID",
+    "stage": "Étape",
+    "name": "Nom",
+    "status": "Statut",
+    "duration": "Durée (s)",
+    "branch": "Branche",
+    "created": "Créé",
+    "tag": "Tag",
+    "size": "Taille",
+    "title": "Titre",
+    "author": "Auteur",
+    "state": "État",
+    "url": "URL"
+  },
+  "status_label": {
+    "success": "RÉUSSI",
+    "passed": "RÉUSSI",
+    "failed": "ÉCHOUÉ",
+    "running": "EN COURS",
+    "pending": "EN ATTENTE",
+    "canceled": "ANNULÉ",
+    "skipped": "IGNORÉ",
+    "manual": "MANUEL",
+    "created": "CRÉÉ"
+  }
+}

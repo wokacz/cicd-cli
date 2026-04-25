@@ -1,0 +1,120 @@
+{
+  "app": {
+    "description": "GitLab CI/CD CLI - beheer je pipelines vanuit de terminal.",
+    "config_panel": "GitLab CI/CD CLI Configuratie"
+  },
+  "init": {
+    "short_help": "Configureer verbinding met een GitLab-instantie.",
+    "help": "Configureer verbinding met een GitLab-instantie.\n\nVraagt interactief om de GitLab-URL en een Personal Access Token,\nvalideert de verbinding en slaat de inloggegevens veilig op.\n\nVoorbeeld:\n  cicd init",
+    "prompt_url": "Voer GitLab-URL in (bijv. https://git.example.com)",
+    "prompt_token": "Voer API-token in (Personal Access Token)",
+    "success": "Succesvol verbonden met GitLab {version}!",
+    "error": "Fout: {error}",
+    "connection_error": "Kon geen verbinding maken: {error}"
+  },
+  "add": {
+    "short_help": "Voeg een repository toe om te volgen.",
+    "help": "Voeg een repository toe aan de gevolgde lijst.\n\nHet REPO-argument moet in 'groep/project'-formaat zijn,\novereenkomend met het GitLab-projectpad.\n\nVoorbeelden:\n  cicd add mygroup/myproject\n  cicd add frontend/webapp",
+    "success": "Repository {name} succesvol toegevoegd!",
+    "error": "Fout: {error}"
+  },
+  "remove": {
+    "short_help": "Verwijder een repository uit de gevolgde lijst.",
+    "help": "Verwijder een repository uit de gevolgde lijst.\n\nVoorbeelden:\n  cicd remove mygroup/myproject",
+    "success": "Verwijderd: {repo}",
+    "not_tracked": "Repository {repo} werd niet gevolgd."
+  },
+  "list": {
+    "short_help": "Toon gevolgde repositories.",
+    "help": "Toon alle momenteel gevolgde repositories.\n\nVoorbeeld:\n  cicd list",
+    "title": "Gevolgde Repositories",
+    "empty": "Geen gevolgde repositories. Voeg er een toe met: cicd add group/project"
+  },
+  "status": {
+    "short_help": "Toon laatste pipeline-status.",
+    "help": "Toon de status van de laatste pipeline voor gevolgde repositories.\n\nAls REPO is opgegeven, wordt alleen de status van die repository getoond.\nAnders wordt de status van alle gevolgde repositories getoond.\n\nVoorbeelden:\n  cicd status\n  cicd status mygroup/myproject",
+    "empty": "Geen gevolgde repositories. Voeg er een toe met: cicd add",
+    "no_pipelines": "Geen pipelines gevonden",
+    "pipeline_info": "Pipeline #{id} ({ref})",
+    "error": "{repo}: {error}"
+  },
+  "pipelines": {
+    "short_help": "Toon recente pipelines voor een repo.",
+    "help": "Toon recente pipelines voor een opgegeven repository.\n\nVoorbeelden:\n  cicd pipelines mygroup/myproject\n  cicd pipelines mygroup/myproject -n 20",
+    "title": "Pipelines - {repo}",
+    "count_help": "Aantal pipelines om te tonen",
+    "error": "Fout: {error}"
+  },
+  "jobs": {
+    "short_help": "Toon jobs voor een pipeline.",
+    "help": "Toon jobs voor een specifieke pipeline of de laatste.\n\nAls PIPELINE_ID wordt weggelaten, worden jobs van de laatste pipeline getoond.\nGebruik -n/--count om jobs van de laatste N pipelines te tonen.\n\nVoorbeelden:\n  cicd jobs mygroup/myproject\n  cicd jobs mygroup/myproject 4409\n  cicd jobs mygroup/myproject -n 5",
+    "title": "Jobs - {repo} / Pipeline #{pipeline_id}",
+    "count_help": "Toon jobs van de laatste N pipelines",
+    "no_pipelines": "Geen pipelines gevonden voor {repo}",
+    "error": "Fout: {error}"
+  },
+  "logs": {
+    "short_help": "Toon logs voor een job.",
+    "help": "Toon logs voor een specifieke job.\n\nGebruik --tail/-t om alleen de laatste N regels te tonen.\n\nVoorbeelden:\n  cicd logs mygroup/myproject 11765\n  cicd logs mygroup/myproject 11765 --tail 50",
+    "tail_help": "Toon laatste N regels (0 = alles)",
+    "error": "Fout: {error}"
+  },
+  "images": {
+    "short_help": "Toon Container Registry-images.",
+    "help": "Toon images in de Container Registry van een repository.\n\nVoorbeelden:\n  cicd images mygroup/myproject",
+    "empty": "Geen images gevonden in registry voor {repo}",
+    "no_tags": "geen tags",
+    "error": "Fout: {error}"
+  },
+  "mrs": {
+    "short_help": "Toon merge requests.",
+    "help": "Toon merge requests voor een repository.\n\nFilter op status: opened, merged, closed of all.\n\nVoorbeelden:\n  cicd mrs mygroup/myproject\n  cicd mrs mygroup/myproject --state merged",
+    "title": "Merge Requests - {repo} ({state})",
+    "error": "Fout: {error}"
+  },
+  "envs": {
+    "short_help": "Toon omgevingen voor een repo.",
+    "help": "Toon omgevingen (deployments) voor een repository.\n\nVoorbeelden:\n  cicd envs mygroup/myproject",
+    "title": "Omgevingen - {repo}",
+    "error": "Fout: {error}"
+  },
+  "language": {
+    "short_help": "Stel weergavetaal in.",
+    "help": "Stel de weergavetaal in voor CLI-berichten.\n\nBeschikbare talen: en, pl, de, fr, es, nl, cs\n\nVoorbeelden:\n  cicd language pl\n  cicd language en",
+    "success": "Taal ingesteld op: {lang}",
+    "current": "Huidige taal: {lang}",
+    "available": "Beschikbare talen: {langs}",
+    "invalid": "Onbekende taal: {lang}. Beschikbaar: {available}"
+  },
+  "error": {
+    "not_initialized": "GitLab-verbinding niet geconfigureerd. Voer eerst uit: cicd init",
+    "invalid_token": "Ongeldig API-token (401 Unauthorized)",
+    "not_found": "Bron niet gevonden: {path}"
+  },
+  "table": {
+    "id": "ID",
+    "stage": "Fase",
+    "name": "Naam",
+    "status": "Status",
+    "duration": "Duur (s)",
+    "branch": "Branch",
+    "created": "Aangemaakt",
+    "tag": "Tag",
+    "size": "Grootte",
+    "title": "Titel",
+    "author": "Auteur",
+    "state": "Status",
+    "url": "URL"
+  },
+  "status_label": {
+    "success": "GESLAAGD",
+    "passed": "GESLAAGD",
+    "failed": "MISLUKT",
+    "running": "ACTIEF",
+    "pending": "WACHTEND",
+    "canceled": "GEANNULEERD",
+    "skipped": "OVERGESLAGEN",
+    "manual": "HANDMATIG",
+    "created": "AANGEMAAKT"
+  }
+}
