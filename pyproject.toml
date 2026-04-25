@@ -18,3 +18,6 @@ cicd = "cicd.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["cicd*"]
+
+[tool.setuptools.package-data]
+cicd = ["lang/*.json"]

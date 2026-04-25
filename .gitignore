@@ -196,3 +196,4 @@ cmake-build-release/
 *.orig
 *.rej
 
+.DS_Store

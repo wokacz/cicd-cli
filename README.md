@@ -36,7 +36,7 @@ A lightweight, zero-configuration-after-setup CLI for **self-hosted GitLab** ins
 ### From source (recommended)
 
 ```bash
-git clone https://github.com/your-org/gitlab-cicd-cli.git
+git clone https://github.com/wokacz/cicd-cli.git
 cd gitlab-cicd-cli
 pip install .
 ```
